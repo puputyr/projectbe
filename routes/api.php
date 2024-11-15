@@ -5,12 +5,8 @@ use App\Http\Controllers\PesanController;
 use App\Http\Controllers\PetaController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\UserController;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
-// Authentication
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-
-// Authenticated routes
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('room-chats', RoomChatController::class);
     Route::apiResource('pesans', PesanController::class);
